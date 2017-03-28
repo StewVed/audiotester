@@ -1,5 +1,5 @@
-var zAppVersion = '2017-3-25';
-var gs = 'https://stewved.github.io/globalscripts/';
+var zAppVersion = 'at2017-3-28'
+, gs = 'https://stewved.github.io/globalscripts/';
 self.addEventListener('install', function(event) {
   event.waitUntil(caches.open(zAppVersion).then(function(cache) {
     return cache.addAll([
@@ -9,24 +9,9 @@ self.addEventListener('install', function(event) {
       , './fileList.js'
       , './main.js'
       , './texts.js'
-      , gs + 'gevents.js'
-      , gs + 'gtexts.js'
-      , gs + 'images/Patreon.png'
-      , gs + 'images/PaypalDonate.png'
-      , gs + 'images/StewVed.jpg'
-      , gs + 'initialize.js'
-      , gs + 'inputs.js'
-      , gs + 'loader.js'
-      , gs + 'main.css'
-      , gs + 'settings.js'
-      , gs + 'sounds.js'
-      , gs + 'storage.js'
-      , gs + 'toolTips.js'
-
     /*
       Do not include:
       index.html
-      (chrome 56.0.2924.87 (64-bit) asks for appmanifest now!) Application Manifest file (appmanifest)
       any favicons
       Service Worker file (sw.js)
     */
@@ -48,10 +33,13 @@ self.addEventListener('fetch', function(event) {
   );
 });
 self.addEventListener('activate', function(event) {
+  var zAppPrefix = zAppVersion.slice(0, 2);
   event.waitUntil(caches.keys().then(function(cacheNames) {
     return Promise.all(cacheNames.map(function(cacheName) {
-      if (cacheName !== zAppVersion) {
-        return caches.delete(cacheName);
+      if (cacheName.slice(0, 2) === zAppPrefix) {
+        if (cacheName !== zAppVersion) {
+          return caches.delete(cacheName);
+        }
       }
     }))
   }))

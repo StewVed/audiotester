@@ -1,5 +1,6 @@
 //global vars for the app
 var zAppVersion = '2017-3-14'
+, zAppPrefix = 'at'
 , gameVars = {
     tone: null
   , vol: null
