@@ -2,12 +2,11 @@
   "name": "Audio Tester",
   "short_name": "audioTester",
   "description": "Audio Testing suite by StewVed",
+  "lang": "en",
   "orientation": "landscape",
   "display": "fullscreen",
-  "lang": "en",
-  "scope": "/",
-  "theme_color": "whitesmoke",
-  "background_color": "whitesmoke",
+  "theme_color": "white",
+  "background_color": "white",
   "icons": [{
     "src": "favicon.svg"
   }, {
@@ -18,6 +17,5 @@
     "src": "favicon256.png",
     "sizes": "256x256",
     "type": "image/png"
-  }
-  ]
+  }]
 }

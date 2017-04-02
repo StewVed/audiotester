@@ -1,5 +1,4 @@
-//global vars for the app
-var zAppVersion = '2017-3-14'
+var zAppVersion = '2017-04-02'
 , zAppPrefix = 'at'
 , gameVars = {
     tone: null
@@ -18,10 +17,10 @@ var zAppVersion = '2017-3-14'
 function initContent() {
   var stuff = '<div id="cont">'
     //volume control slider from settings (modded)
-    + '<div id="sli-vol-C" class="volCont">'
-      + '<div id="sli-vol-g" class="volGrad"></div>'
-      + '<div id="sli-vol-I" class="volInner">'
-        + '<div id="sli-vol-T" class="vImg">◢</div>' //◢ &#9698;
+    + '<div id="sli-vola-C" class="volCont">'
+      + '<div id="sli-vola-g" class="volGrad"></div>'
+      + '<div id="sli-vola-I" class="volInner">'
+        + '<div id="sli-vola-T" class="vImg">◢</div>' //◢ &#9698;
       + '</div>'
     + '</div>'
     //2-Dimentional slider for surround panning
@@ -67,16 +66,16 @@ function runApp() {
   gameVars.tone.type = 'sine';
 
   //set the volume slider:
-  mouseVars.start.target = document.getElementById('sli-vol-I');
-  sliderUpdate([globVol]);
+  mouseVars.start.target = document.getElementById('sli-vola-I');
+  sliderUpdate([globVol], 0);
   //tg_changeSlider(tg_pitchNotes(72, 12, 69));
   //set the frequency slider:
   mouseVars.start.target = document.getElementById('sli-freq-I');
-  sliderUpdate([tmpFreq]);
+  sliderUpdate([tmpFreq], 0);
   //set the panning slider:
   mouseVars.start.target = document.getElementById('sli-pan-I');
   pannerInit();
-  sliderUpdate(tmpPan);
+  sliderUpdate(tmpPan, 0);
 
 
 /*

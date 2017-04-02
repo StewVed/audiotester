@@ -1,40 +1,15 @@
-
-/*
-function tg_mDown(targID, e) {
-  var zNewID = targID.split('-');
-  if (zNewID[1] === 'I') {
-    mouseVars.type = 'sgDrag';
-  } else if (zNewID[1] === 'C') {
-    mouseVars.start.target = document.getElementById('freq-I');
-    mouseVars.type = 'sgDrag';
-    tg_mMove(mouseVars.start.target, e);
-  }
+function keyDownEvents() {
+  //this is for an editEnable input element
 }
-function tg_mMove(zSlider, e) {
-  var zNewID = zSlider.id.split('-');
-  //is the mouse
-  //find the percentage of the the slider's left
-  //debugger;
-  var zWidth = zSlider.parentNode.offsetWidth;
-  var zLeft = zSlider.parentNode.offsetLeft;
-  var sliderLeft = e.clientX - document.getElementById('cont').offsetLeft - zLeft;
-  sliderLeft -= (zSlider.offsetWidth / 2);
-  var sliderPercent = (sliderLeft / (zWidth - zSlider.offsetWidth)) * 100;
-  if (sliderPercent < 0) {
-    sliderPercent = 0;
-  } else if (sliderPercent > 100) {
-    sliderPercent = 100;
-  }
-  if (zNewID[1] === 'I' || zNewID[1] === 'C') {
-    tg_changeFreq(sliderPercent);
-  }
-  //document.getElementById(WinNo + 'Title').innerHTML = sliderPercent + '%';
-  //recalculate to offset width of the slider iteself
-  var zDiff = (zWidth - zSlider.offsetWidth) / zWidth;
-  sliderPercent *= zDiff;
-  zSlider.style.left = sliderPercent + '%';
+function keyDownGameEvents(theKey) {
+  //this is for in-game events.
 }
-*/
+function keyUpEvents() {
+  //this is for an editEnable input element
+}
+function keyUpGameEvents(theKey) {
+  //this is for in-game events.
+}
 function mouseClickEvents() {
   var zButton = mouseVars.current.target;
     if (zButton.id === 'sli-pan-I') {
@@ -129,27 +104,27 @@ function resizeEvents() {
   //resizeRatio(16, 9); //for making it a specific aspect ratio...
 }
 //This should be the only function that has to be edited for sliders :)
-function sliderEvents(sliderPercent) {
+function sliderEvents(sliderPercent, sve) {
   var sliderType = mouseVars.start.target.id.split('-')[1];
 
-  if (sliderType === 'vol') {
+  if (sliderType === 'vola') {
     //update the app's volume
     globVol = sliderPercent[0];
     gameVars.vol.gain.value = (globVol / 100);
-    if (mouseVars.start.target.style.background.length) {
+    if (sve && mouseVars.start.target.style.background.length) {
       storageSave('volume', globVol.toFixed(2));
     }
     sliderColors(sliderPercent);
   } else if (sliderType === 'freq') {
     //update the app's frequency
     tg_changeFreq(sliderPercent);
-    if (mouseVars.start.target.style.background.length) {
+    if (sve && mouseVars.start.target.style.background.length) {
       storageSave('frequency', sliderPercent[0].toFixed(2));
     }
     sliderColors(sliderPercent);
   } else if (sliderType === 'pan') {
     //
-    if (mouseVars.start.target.classList.contains('uButtonRed') ||mouseVars.start.target.classList.contains('uButtonGreen')) {
+    if (sve && (mouseVars.start.target.classList.contains('uButtonRed') ||mouseVars.start.target.classList.contains('uButtonGreen'))) {
       storageSave('panPosition', sliderPercent[0].toFixed(2) + ',' + sliderPercent[1].toFixed(2));
     }
     else {
