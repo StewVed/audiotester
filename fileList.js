@@ -1,5 +1,4 @@
-var gs = 'https://stewved.github.io/globalscripts/'
-//gs = 'http://127.0.0.1/edsa-github/globalscripts/'
+var gs = '../globalscripts/'
 //Load up the css style files first, which includes the loading styles.
 , cssList = [
   [gs, 'gstyles', 'css', 'c']

@@ -57,17 +57,7 @@ function mouseUpEvents() {
 }
 
 function mouseWheelEvents(targ, d) {
-  if (targ.classList.contains('letScroll')) {
-    //very dodgy hard-code - only one thing can be scrolled.
-    targ = document.getElementById('toastPopup');
-    var zSpeed;
-    if (d < 0) {
-      zSpeed = -1000;
-    } else {
-      zSpeed = 1000;
-    }
-    divScroller(targ, zSpeed, new Date().getTime());
-  }
+
 }
 
 function gamePadsButtonDown(zButton) {
@@ -93,14 +83,6 @@ function anEvent() {
 
 
 function resizeEvents() {
-  //make the balance circle a circle...
-  document.getElementById('sli-pan-C').style.height =
-  document.getElementById('sli-pan-C').offsetWidth + 'px';
-
-  zTop = resizeCenter(document.body.offsetHeight, document.getElementById('cont').offsetHeight);
-  document.getElementById('cont').style.top = zTop + 'px';
-  document.getElementById('cont').style.left = resizeCenter(document.body.offsetWidth, document.getElementById('cont').offsetWidth) + 'px';
-
   //resizeRatio(16, 9); //for making it a specific aspect ratio...
 }
 //This should be the only function that has to be edited for sliders :)

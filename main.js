@@ -1,35 +1,34 @@
-var zAppVersion = '2017-04-02'
-, zAppPrefix = 'at'
-, gameVars = {
-    tone: null
-  , vol: null
-  , pan: null
-  , panPos: {x:0, y:0, z:0}
-  , lisn: null
+var zAppPrefix = 'at'
+  , gameVars = {
+      tone: null
+    , vol: null
+    , pan: null
+    , panPos: {x:0, y:0, z:0}
+    , lisn: null
   }
-//let's do 18kHz to 22kHz as this isn't supposed to be proper HiFi
-, fMin = 18
-, fNow = 45
-, fMax = 22000
+  //let's do 18kHz to 22kHz as this isn't supposed to be proper HiFi
+  , fMin = 18
+  , fNow = 45
+  , fMax = 22000
 ;
 
 
 function initContent() {
-  var stuff = '<div id="cont">'
+  var stuff = '<div id="cont" style="text-align:center;padding:0.3em;">'
     //volume control slider from settings (modded)
     + '<div id="sli-vola-C" class="volCont">'
-      + '<div id="sli-vola-g" class="volGrad"></div>'
+      + '<div id="sli-vola-g" class="volGrad">&nbsp;</div>'
       + '<div id="sli-vola-I" class="volInner">'
         + '<div id="sli-vola-T" class="vImg">◢</div>' //◢ &#9698;
       + '</div>'
     + '</div>'
     //2-Dimentional slider for surround panning
     + '<div id="sli-pan-C" class="balancer">'
-      + '<button id="sli-pan-I" class="uButtons" style="height:4em;width:4em;margin:0;padding:0;position:relative;top:-1px;left:-1px;">Start</button>'
+      + '<button id="sli-pan-I" class="uButtons" style="height:4em;width:4em;margin:0;padding:0;position:absolute;top:5%;left:5%;">Start</button>'
     + '</div>'
     //frequency control slider
     + '<div id="sli-freq-C" class="volCont">'
-      + '<div id="sli-freq-g" class="volGrad"></div>'
+      + '<div id="sli-freq-g" class="volGrad">&nbsp;</div>'
       + '<div id="sli-freq-I" class="volInner">'
         + '<div id="sli-freq-T" class="nImg">♫</div>'
       + '</div>'

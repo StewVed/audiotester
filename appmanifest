@@ -2,6 +2,7 @@
   "name": "Audio Tester",
   "short_name": "audioTester",
   "description": "Audio Testing suite by StewVed",
+  "start_url": ".",
   "lang": "en",
   "orientation": "landscape",
   "display": "fullscreen",
